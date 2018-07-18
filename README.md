@@ -17,7 +17,7 @@ WebCrawler
 
 ## Download
 
-Download one version of all the modules from our [releases page](../../releases), that includes a jar.
+Github does not allow uploading files larger than 10mb, so it is necessary to use it from the source code
 
 ## Usage
 From jar run:
