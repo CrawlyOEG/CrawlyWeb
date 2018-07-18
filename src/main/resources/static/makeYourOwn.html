@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crawly | MAKE</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<style type="text/css">
+	.myLoader2 {
+		display: none;
+		border: 10px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 10px solid #0000b3;
+		width: 25px;
+		height: 25px;
+		-webkit-animation: spin 2s linear infinite; /* Safari */
+		animation: spin 2s linear infinite;
+	}
+	#desaparecer{
+		width: 70%;
+	}
+	#reiniciarDiscover{
+		display: none;
+		text-align: center;
+		margin: auto;
+	}
+	#cargaModelo{
+		display: none;
+	}
+	#ponerAlgoAqui{
+		margin-top: 50px;
+		text-align: center;
+	
+
+	}
+
+</style>
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+			<h1>Crawly</h1>
+			<input type="checkbox" id="menu-bar">
+			<label class="icon-menu" for="menu-bar"></label>
+			<nav class="menu">
+				<a href="index.html">Home</a>
+				<a href="discover.html">Discover</a>
+				<a href="extract.html">Extract</a>
+				<a href="makeYourOwn.html">Make</a>
+			</nav>
+		</div>
+	</header>
+	<div id="desaparecer" class="container">
+		<h2 class="py-3">Fill in the data</h2>
+		
+		<label for="url">Librairy URL:</label>
+		<input type="url" class="form-control" id="url" placeholder="Enter url" name="url" required>
+		
+		
+		<label for="user">User:</label>
+		<input type="text" class="form-control" id="user" placeholder="Enter user" name="user" required>
+		
+		<label for="topic">Topic:</label>
+		<input type="text" class="form-control" id="topic" placeholder="Enter topic" name="topic" required>
+
+		<label for="pwd">Password:</label>
+		<input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" required>
+		
+		<label for="email">Email:</label>
+		<input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+		
+		<label for="number">Number of documents:</label>
+		<input type="number" min="0" class="form-control" id="number" placeholder="Enter number" name="number" required>
+
+		<input type="submit" value="Submit" onclick="crearLibreria()">
+	</div>
+	<h3 id="ponerAlgoAqui"></h3>
+	<div class="container py-4" id="reiniciarDiscover">
+		<button type="button" class="btn btn-primary" onClick="window.location.reload()">Try Another</button>
+	</div>
+	
+	<div id="cargaModelo">
+		<h3 id="relevant"> Making model ... </h3>
+		<div id="preloader_1">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function crearLibreria(){
+			console.log("hacemospeticion");
+			document.getElementById("desaparecer").style.display="none";
+			document.getElementById("cargaModelo").style.display="block";
+			var url = document.getElementById("url").value;
+			var user = document.getElementById("user").value;
+			var topic = document.getElementById("topic").value;
+			var password = document.getElementById("pwd").value;
+			var email = document.getElementById("email").value;
+			var nDocuments = document.getElementById("number").value;
+			uploadFile(url,user,topic,password,email,nDocuments);
+		}
+
+		function uploadFile(url,user,topic,password,email,nDocuments) {
+			console.log("Entramos");
+			var ponerURL = "/makeModel?urlLibrairy="+url+"&user="+user+"&password="+password+"&topic="+topic+"&correo="+email+"&nDocuments="+nDocuments;
+			$.ajax({
+				url: ponerURL,
+				type: "POST",
+				success: function (response) {
+					console.log("guay");
+					document.getElementById("desaparecer").style.display="none";
+					document.getElementById("cargaModelo").style.display="none";
+					document.getElementById("reiniciarDiscover").style.display="block";
+					if(response.status != "401"){
+						document.getElementById('ponerAlgoAqui').style.color = "green";
+						document.getElementById('ponerAlgoAqui').innerHTML="Successful Request. You will receive an email shortly";
+					}
+					else{
+						document.getElementById('ponerAlgoAqui').style.color = "red";
+						document.getElementById('ponerAlgoAqui').innerHTML="Entered url, username and password do not match";
+					}
+				},
+				error: function (response) {
+					document.getElementById("cargaModelo").style.display="none";
+					console.log("mal");
+					document.getElementById("reiniciarDiscover").style.display="block";
+					document.getElementById("myLoader2").style.display="none";
+					document.getElementById('ponerAlgoAqui').innerHTML=response.status;
+				}
+			});
+		} 
+	</script>
+</body>
+</html>
+

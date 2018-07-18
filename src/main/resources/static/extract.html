@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crawly | EXTRACT</title>
+	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<style type="text/css">
+	#reducir{
+		width: 70%;
+		text-align: center;
+		margin: auto;
+		margin-top: 40px;
+	}
+	#chooseOneButton{
+		display: none;
+		margin: auto;
+		margin-top: 50px;
+		text-align: center;
+	}
+	#chooseAllOptions{
+		display: none;
+		margin: auto;
+		margin-top: 50px;
+		text-align: center;
+	}
+	#misNumeros{
+		display: none;
+	}
+	.myLoader2 {
+		display: none;
+		border: 10px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 10px solid #0000b3;
+		width: 25px;
+		height: 25px;
+		-webkit-animation: spin 2s linear infinite; /* Safari */
+		animation: spin 2s linear infinite;
+	}
+	#chooseOption{
+		margin-top: 100px;
+	}
+	#reiniciarExtract{
+		display: none;
+		text-align: center;
+		margin: auto;
+	}
+	#upload-file-message-error{
+		display: none;
+	}
+	#upload-file-message-acierto{
+		display: none;
+		font-size: ;
+	}
+	#success-download{
+		display: none;
+		text-align: center;
+		margin: auto;
+	}
+	#upload-file-message-aMedias{
+		display: none;
+		text-align: center;
+		margin: auto;
+	}
+	#reiniciarDiscoverxdd{
+		display: none;
+	}
+	#momentaneo{
+		margin-top: 100px;
+		text-align: center;
+		font-family: 'Raleway', sans-serif;
+	}
+	#reiniciarDiscoverxdd{
+		margin: auto;
+		text-align: center;
+		margin-bottom: 100px;
+	}
+	#upload-file-message-aMedias{
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+			<h1>Crawly</h1>
+			<input type="checkbox" id="menu-bar">
+			<label class="icon-menu" for="menu-bar"></label>
+			<nav class="menu">
+				<a href="index.html">Home</a>
+				<a href="discover.html">Discover</a>
+				<a href="extract.html">Extract</a>
+				<a href="makeYourOwn.html">Make</a>
+			</nav>
+		</div>
+	</header>
+	<div class="container py-4" id="reiniciarDiscoverxdd">
+		<button type="button" class="btn btn-primary" onClick="window.location.reload()">Try Another</button>
+	</div>
+	<div id="selectUploadPDF" class="contenedor">
+		<h2 id="chooseOption"> Extract all the information from your pdf</h2>
+		<h3 id="chooseOption2"> Text, images and tables they are now avaliable for you</h3>
+	</div>
+	<div class="form-div">
+		<div id="melajuego">
+			<form id="upload-file-form">
+				<label for="upload-file-input" class="inputlabel">
+					<i class="icon-pdf"></i>
+					<span id="label-span"><u>Choose file</u></span>
+				</label>
+				<input id="upload-file-input" accept=".pdf" type="file" name="uploadfile"  />
+			</form>
+		</div>
+	</div>
+	<div id="chooseOneButton">
+		<h5>Select an option</h5>
+		<button id="buttonResources" type="button" class="btn btn-outline-secondary" name="butPages" onclick="seleccionRecursos(this.name)">Extract by PAGES</button>
+		<button id="buttonResources" type="button" class="btn btn-outline-secondary" name="butBook" onclick="seleccionRecursos(this.name)">Extract by BOOKMARKS</button>
+		<button id="buttonResources" type="button" class="btn btn-outline-secondary" name="butComp" onclick="seleccionRecursos(this.name)">Complete extraction</button>
+	</div>
+
+	<div class="container" id="reiniciarExtract">
+		<a id="upload-file-message-error" class="py-8" style="color:red"></a>
+		<h2 id="upload-file-message-acierto" class="py-8" style="color:green">Download your files</h2>
+		<h6 id="upload-file-message-aMedias" class="py-8" style="color:orange">*Not found bookmarks</h6>
+		<button id="success-download" type="button" class="btn btn-success py-3">DOWNLOAD</button>
+	</div>
+
+	<div id="chooseAllOptions">
+		<div id="misNumeros">
+			<span id="textoDeNumeros"></span>
+			<input type="text" id="numbers" name="uname" placeholder=" Example: 1-3,5"/>
+		</div>
+		Try to <b>fix</b> the text [Experimental] <input type="checkbox" id="fixear" value="1">
+		<br>
+		Extract also <b>images</b> and <b>tables</b>   <input type="checkbox" id="allResources" value="1">
+		<div class="container py-4" id="reiniciarDiscover">
+			<button id="vamosAEnviar" type="button" class="btn btn-primary" onClick="conectarseRead()">Get started</button>
+		</div>
+	</div>
+
+	<h2 id="chooseOption">All our options</h2>
+	<div class="card-deck h-100" id="reducir">
+		<div class="card" style="width: 5rem;">
+			<img class="card-img-top" src="img/pages.png" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">Pages</h5>
+				<p class="card-text">Indicate the pages you want to extract your information</p>
+			</div>
+		</div>
+		<div class="card" style="width: 5rem;">
+			<img class="card-img-top" src="img/Bookmarkicon.png" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">Bookmark</h5>
+				<p class="card-text">indicate the bookmarks you want to extract your information</p>
+			</div>
+		</div>
+		<div class="card" style="width: 5rem;">
+			<img class="card-img-top" src="img/extractPdficon.png" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">Complete</h5>
+				<p class="card-text">Do a complete extraction of your information</p>
+			</div>
+		</div>
+	</div>
+	<div id="myLoader2"></div>
+	<footer id="footer">
+		<div class="contenedor">
+			<ul class="rights">
+				<li>&copy; Copyright 2018 OEG-UPM</li>
+				<li>All Rights Reserved</li>
+				<li><a href="https://github.com/jorgejota/TrabajoFC2018" class="icon-github"></a></li>
+			</ul>
+		</div>
+	</footer>
+	<script type="text/javascript">
+		var nombreMetodo = "";
+		$(document).ready(function() {
+			$("#numbers").bind("input", function(){
+				var aComprobar = document.getElementById('numbers').value;
+				var strSplit = aComprobar.split(",");
+				var i = 0;
+				if(strSplit == ""){
+					document.getElementById("vamosAEnviar").disabled = true;
+					return;
+				}
+				for (; i < strSplit.length ; i++) {
+					var strSplit2 = strSplit[i].split("-");
+					//No puede haber x-y-z, son rangos no permitidos
+					if(strSplit2.length>2){;
+						document.getElementById("vamosAEnviar").disabled = true;
+						return;
+					}
+					for (var j = 0; j < strSplit2.length ; j++) {
+						if(strSplit2[j] == ""){
+							document.getElementById("vamosAEnviar").disabled = true;
+							return;
+						}
+						//El numero introduccido no es un numero
+						if(isNaN(strSplit2[j])){
+							document.getElementById("vamosAEnviar").disabled = true;
+							return;
+						}
+					}
+				}
+				if(i==0){
+					document.getElementById("vamosAEnviar").disabled = true;
+					return;
+				}
+				document.getElementById("vamosAEnviar").disabled = false;
+			});
+
+			$("#upload-file-input").on("change", function(){
+				document.getElementById('melajuego').style.display="none";
+				document.getElementById('chooseOneButton').style.display="block";
+			});
+		});
+
+		function seleccionRecursos(clicked_name){
+			document.getElementById('chooseOneButton').style.display="none";
+			nombreMetodo = clicked_name;
+			if(clicked_name!="butComp"){
+				if(clicked_name=="butPages"){
+					document.getElementById('textoDeNumeros').innerHTML="Select number of pages: ";
+				}
+				else{
+					document.getElementById('textoDeNumeros').innerHTML="Select number of bookmarks: ";
+				}
+				document.getElementById('misNumeros').style.display="block";
+			}
+			document.getElementById('chooseAllOptions').style.display="block";
+		}
+
+		function conectarseRead() {
+			console.log("A ver que pasa");
+			var fixear = document.getElementById("fixear").checked;
+			var allResources = document.getElementById("allResources").checked;
+			var numbersPass = "";
+			if(nombreMetodo!="butComp"){
+				var numbersPass = document.getElementById("numbers").value;
+			}
+			console.log("Procedemos a la llamada");
+			//Aqui tengo el nombreMetodo y me tengo que conectar
+			document.getElementById('chooseAllOptions').style.display="none";
+			document.getElementById('myLoader2').style.display="block";
+			uploadFile(nombreMetodo,fixear,allResources,numbersPass);
+			document.getElementById('myLoader2').style.display="none";
+		}
+
+    /**
+     * Upload the file sending it via Ajax at the Spring Boot server.
+     */
+     function uploadFile(nombreMetodo,fixear,allResources,numbersPass) {
+     	var miArchivo = new FormData($("#upload-file-form")[0]);
+     	var ponerURL = "/checkPDF?modePDF="+nombreMetodo+"&fixPDF="+fixear+"&allResources="+allResources+"&importantNumbers="+numbersPass;
+     	$.ajax({
+     		url: ponerURL,
+     		type: "POST",
+     		data: new FormData($("#upload-file-form")[0]),
+     		enctype: 'multipart/form-data',
+     		processData: false,
+     		contentType: false,
+     		cache: false,
+     		success: function (response) {
+     			console.log("Hola");
+     			console.log(response.status);
+     			 window.location.href = 'checkPDF/download/'
+                    + response.status;
+     		},
+     		error: function (xhr, ajaxOptions, thrownError) {
+     			console.log("Esto es fallo");
+     		}
+     	});
+    } // function uploadFile
+/*		function uploadFile(nombreMetodo,fixear,allResources,numbersPass) {
+			var miArchivo = new FormData($("#upload-file-form")[0]);
+			$.ajax({
+				url: "/checkPDF",
+				type: "POST",
+				data: {pdfToUpload: miArchivo, modePDF: nombreMetodo, fixPDF: fixear, allResources: allResources, importantNumbers: numbersPass},
+				enctype: 'multipart/form-data',
+				processData: false,
+				contentType: false,
+				cache: false,
+				success: function (response) {
+					console.log(response);
+				},
+				error: function (response) {
+					console.log(response);
+				}
+			});
+		} // function uploadFile*/
+
+
+	</script>
+</body>
+</html>
+

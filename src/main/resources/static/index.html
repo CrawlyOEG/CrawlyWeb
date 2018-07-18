@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crawly | MAIN</title>
+	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<style type="text/css">
+	#reducir{
+		width: 70%;
+		text-align: center;
+		margin: auto;
+		margin-top: 40px;
+	}
+	#chooseOption{
+		text-align: center;
+		margin: auto;
+	}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="contenedor">
+			<h1>Crawly</h1>
+			<input type="checkbox" id="menu-bar">
+			<label class="icon-menu" for="menu-bar"></label>
+			<nav class="menu">
+				<a href="index.html">Home</a>
+				<a href="discover.html">Discover</a>
+				<a href="extract.html">Extract</a>
+				<a href="makeYourOwn.html">Make</a>
+			</nav>
+		</div>
+	</header>
+	<main>
+		<section id="banner">
+			<div class="contenedor">
+				<h2>CRAWLY</h2>
+				<p>KNOW IF YOUR PDF IS ABOUT LIGHT POLLUTION</p>
+				<a href="#chooseOption" class="myButton principal">GET STARTED</a>
+			</div>
+		</section>
+
+		<h2 id="chooseOption">Choose one option</h2>
+
+		<div class="card-deck h-100" id="reducir">
+			<div class="card" style="width: 5rem;">
+				<img class="card-img-top" src="img/buildIcon.png" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Discover</h5>
+					<p class="card-text">Check what kind of information contains your PDF about light pollution.</p>
+					<a href="discover.html" class="btn btn-primary">Go Discover</a>
+				</div>
+			</div>
+			<div class="card" style="width: 5rem;">
+				<img class="card-img-top" src="img/extractPdficon.png" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Extract</h5>
+					<p class="card-text">Extract all the information from your pdf, including text, images and tables.</p>
+					<a href="extract.html" class="btn btn-primary">Go Extract</a>
+				</div>
+			</div>
+			<div class="card" style="width: 5rem;">
+				<img class="card-img-top" src="img/findIcon.png" alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title">Make</h5>
+					<p class="card-text">Make your own librAlry model to detect topics in your PDF files and know their topics.</p>
+					<a href="makeYourOwn.html" class="btn btn-primary">Go Make</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer id="footer">
+		<div class="contenedor">
+			<ul class="rights">
+				<li>&copy; Copyright 2018 OEG-UPM</li>
+				<li>All Rights Reserved</li>
+				<li><a href="https://github.com/jorgejota/TrabajoFC2018" class="icon-github"></a></li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>
+

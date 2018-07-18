@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Crawly | UPLOAD</title>
+      <link rel="stylesheet" href="css/fontello.css">
+      <link rel="stylesheet" href="css/main.css">
+      <script src="js/jquery-3.3.1.min.js"></script>
+   </head>
+   <body>
+      <header>
+         <div class="contenedor">
+            <h1>Crawly</h1>
+            <input type="checkbox" id="menu-bar">
+            <label class="icon-menu" for="menu-bar"></label>
+            <nav class="menu">
+               <a href="index.html">Home</a>
+               <a href="upload.html">Upload</a>
+               <a href="ckan.html">CKAN</a>
+            </nav>
+         </div>
+      </header>
+      <div class="contenedor selectUploadPDF">
+         <h2> Know if your PDF is about light pollution</h2>
+         <h3> Our algorithm indicates the probability that the selected pdf belongs to light pollution </h3>
+      </div>
+      <div class="form-div">
+         <div id="melajuego">
+            <form id="upload-file-form">
+               <label for="file" class="inputlabel">
+               <i class="icon-pdf"></i>
+               <span id="label-span"><u>Choose file</u></span>
+               </label>
+               <input id="file" type="file" multiple="true" accept="*"/>
+            </form>
+         </div>
+         <span id="upload-file-message"></span>
+         <h3 id="relevant"> Detecting if your PDF is relevant ... </h3>
+         <div id="preloader_1">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+         </div>
+      </div>
+      <!--<footer id="footer">
+         <div class="contenedor">
+            <ul class="rights">
+               <li>&copy; Copyright 2018 OEG-UPM</li>
+               <li>All Rights Reserved</li>
+               <li><a href="https://github.com/jorgejota/TrabajoFC2018" class="icon-github"></a></li>
+            </ul>
+         </div>
+         </footer>-->
+      <!-- Javascript -->
+      <script>
+         $(document).ready(function(){
+           $("#file").on("change",function(){
+              document.getElementById('melajuego').style.display="none";
+             document.getElementById('relevant').style.display="block";
+             document.getElementById('preloader_1').style.display="block";
+             document.getElementById('file').style.display=" none";
+             uploadFile();
+           });
+         }); 
+
+        function resolver(e) {
+            document.getElementById('relevant').style.display="none";
+            document.getElementById('preloader_1').style.display="none";
+            document.getElementById("upload-file-message").innerHTML=e;
+         }
+
+         function uploadFile() {
+         $.ajax({
+         url: "/uploadFile",
+         type: "POST",
+         data: new FormData($("#upload-file-form")[0]),
+         enctype: 'multipart/form-data',
+         processData: false,
+         contentType: false,
+         cache: false,
+         success: function(result) {
+            resolver('Your % is ' + result.porcentage);
+         },
+         error: function(result) {
+            resolver('An error has ocurred ' + result.status);
+         }
+         })};
+      </script>
+   </body>
+</html>

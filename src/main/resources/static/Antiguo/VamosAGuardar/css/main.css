@@ -1,0 +1,388 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url(http://weloveiconfonts.com/api/?family=fontawesome|typicons);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background: #333;
+    color: #fff;
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.contenedor {
+    width: 98%;
+    margin: auto;
+}
+
+h1 {
+    float: left;
+}
+
+header .contenedor {
+    display: table;
+}
+
+section {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.copy {
+    font-size: 20px;
+}
+
+@media (min-width:1024px) {
+    .contenedor {
+        width: 1000px;
+    }
+}
+
+#banner {
+    padding: 30em 0 13em 0;
+	background-attachment: fixed;
+	background-image: url("../img/cieloNocturno.jpg");
+	background-position: center top;
+	background-size: cover;
+	line-height: 1.75;
+	text-align: center; 
+}
+
+#banner img {
+    width: 100%;
+    height: 100%;
+}
+
+#banner .contenedor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #fff;
+}
+
+#banner h2 {
+    font-size: 28px;
+}
+
+#banner a {
+    color: #FFFFFF;
+}
+
+#banner a:hover {
+    background: rgba(51,51,51,0.5);
+}
+
+@media (min-width:480px) {
+    #banner h2 {
+        font-size: 40px;
+    }
+    
+    #banner a {
+        margin-top: 25px;
+    }
+}
+
+@media (min-width:768px) { 
+    #banner {
+        height: 300px;
+        overflow: hidden;
+    }
+    
+    #banner img {
+        height: auto;
+        margin-top: -100px;
+    }
+}
+
+@media (min-width:1024px) { 
+    #banner img {
+        margin-top: -200px;
+    }
+}
+
+#menu-bar {
+    display: none;
+}
+
+header label {
+    float: right;
+    font-size: 28px;
+    margin: 6px 0;
+    cursor: pointer;
+}
+
+.menu {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(51,51,51,0.9);
+    transition: all 0.5s;
+    transform: translateX(-100%);
+}
+
+.menu a {
+    display: block;
+    color: #fff;
+    height: 50px;
+    text-decoration: none;
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.menu a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+#menu-bar:checked ~ .menu {
+    transform: translateX(0%);
+}
+
+@media (min-width:1024px) {
+    .menu {
+        position: static;
+        width: auto;
+        height: auto;
+        transform: translateX(0%);
+        float: right;
+        display: flex;
+    }
+    
+    .menu a {
+        border: none;
+    }
+    
+    header label { 
+        display: none;
+    }
+}
+
+/* Footer */
+
+		#footer .icons {
+			font-size: 1.5em;
+		}
+
+		/* Footer */
+
+	#footer {
+        margin-top: 30px;   
+		padding: 2em 0 1em 0;
+		background: #f6f6f6;
+		color: #aaa;
+		text-align: center;
+	}
+
+		#footer a {
+			-moz-transition: color 0.2s ease-in-out;
+			-webkit-transition: color 0.2s ease-in-out;
+			-ms-transition: color 0.2s ease-in-out;
+			transition: color 0.2s ease-in-out;
+			color: #aaa;
+			text-decoration: none;
+		}
+
+			#footer a:active, #footer a:hover {
+				color: #650	;
+			}
+
+		#footer .rights {
+			margin: 2em 0;
+			padding: 0;
+			text-align: center;
+		}
+
+			#footer .rights li {
+				display: inline-block;
+				float:center;
+				margin-left: 1.5em;
+				padding-left: 1.5em;
+			}
+
+
+/* Botones */
+
+.myButton {
+    -moz-box-shadow: 0px 0px 0px 2px #9fb4f2;
+    -webkit-box-shadow: 0px 0px 0px 2px #9fb4f2;
+    box-shadow: 0px 0px 0px 2px #9fb4f2;
+    background-color:#7892c2;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:1px solid #4e6096;
+    display:inline-block;
+    cursor:pointer;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:19px;
+    padding:14px 40px;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #283966;
+}
+
+.myButton:hover {
+    background-color:#476e9e;
+}
+.myButton:active {
+    position:relative;
+    top:1px;
+}
+
+
+
+/* PRINCIPAL button*/
+.principal{	
+	margin-left: auto;
+    margin-right: auto;
+    top: 80px;
+}
+
+/* chooseOption */
+
+.myEleccion{
+    margin-top: 80px;
+    margin-bottom: 80px;
+    width: 485px;
+    height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 300px;
+    text-align: center;
+}
+
+.leftEleccion{
+    width: 300px;
+    height: 123px;
+    margin-left: 270px;    
+}
+
+.rightEleccion{
+    width: 240px;
+    height: 123px;    
+}
+
+
+#chooseOption h2{
+    margin-top: 50px;
+    text-align: center;
+    font-size: 28px;
+}
+
+#chooseOption h3{
+    text-align: center;
+    font-size: 18px;
+}
+
+
+#chooseOption img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 210px;
+}
+
+
+.selectUploadPDF{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.form-div{
+    margin-top: 100px;
+    text-align: center;
+}
+
+#file{
+    display: none;
+}
+
+.inputlabel{
+    background: #33cc33;
+    color: #fff;
+     padding: 60px 200px 60px 200px;
+    -moz-box-shadow: 0px 0px 0px 2px #70db70;
+    -webkit-box-shadow: 0px 0px 0px 2px #70db70;
+    box-shadow: 0px 0px 0px 2px #70db70;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+    border-radius:10px;
+    border:1px solid #4e6096;
+    cursor:pointer;
+    font-size:22px;
+}
+
+#preloader_1{
+    width: 55px;
+    height: auto;
+    margin: 0 auto;
+    bottom: 50px;
+    padding: 10px;
+    position: relative;
+    display: none;
+}
+#relevant{
+    position:relative;
+    bottom: 45px;
+    text-align: center;
+    display: none;
+}
+
+#preloader_1{
+    font-size: 23;
+    color: #33cc33;
+}
+
+#preloader_1 span{
+    display:block;
+    bottom:0px;
+    width: 9px;
+    height: 5px;
+    background:#9b59b6;
+    position:absolute;
+    animation: preloader_1 1.5s  infinite ease-in-out;
+}
+ 
+#preloader_1 span:nth-child(2){
+left:11px;
+animation-delay: .2s;
+}
+
+#preloader_1 span:nth-child(3){
+left:22px;
+animation-delay: .4s;
+}
+#preloader_1 span:nth-child(4){
+left:33px;
+animation-delay: .6s;
+}
+#preloader_1 span:nth-child(5){
+left:44px;
+animation-delay: .8s;
+}
+@keyframes preloader_1 {
+    0% {height:5px;transform:translateY(0px);background:#9b59b6;}
+    25% {height:30px;transform:translateY(15px);background:#3498db;}
+    50% {height:5px;transform:translateY(0px);background:#9b59b6;}
+    100% {height:5px;transform:translateY(0px);background:#9b59b6;}
+}
